@@ -43,9 +43,5 @@ public class Lesson_2_3
         System.out.println("Задание 3");
         Park.Attractions atraction1 = new Park().new Attractions("Орбита", "Пн-Пт 9:00 - 18:00", 300);
         atraction1.ConsoleOutAttractions();
-
-
-
-
     }
 }
