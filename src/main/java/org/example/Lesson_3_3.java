@@ -2,10 +2,11 @@ package org.example;
 
 import static org.example.Lesson_3_1.count;
 
-public class Lesson_3_3 {
-    public static void main(String[] args) {
+public class Lesson_3_3
+{
+    public static void main(String[] args)
+    {
         // Первая часть.
-
         System.out.println("Задание 1");
         System.out.println("Первая часть.");
         Dog dog1 = new Dog("Шарик");
@@ -37,7 +38,8 @@ public class Lesson_3_3 {
         System.out.println("В миске " + Cat.food + " единиц еды.");
 
         System.out.println();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++)
+        {
             catArray[i].feedingCat(30);
             System.out.println("Cытость " + catArray[i].name + ": " + Cat.Satiety);
             System.out.println("После " + catArray[i].name + " в миске осталось " + Cat.food + " единиц еды.");
@@ -46,7 +48,8 @@ public class Lesson_3_3 {
         System.out.println();
         System.out.println("В миску добавили еще 100 единииц еды");
         Cat.food(100);
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++)
+        {
             catArray[i].feedingCat(20);
             System.out.println("Cытость " + catArray[i].name + ": " + Cat.Satiety);
             System.out.println("После " + catArray[i].name + " в миске осталось " + Cat.food + " единиц еды.");
