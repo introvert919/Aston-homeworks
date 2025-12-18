@@ -5,8 +5,7 @@ package org.example;
 Конструктор класса должен заполнять эти поля при создании объекта.
 Внутри класса «Товар» написать метод, который выводит информацию об объекте в консоль.*/
 
-class Product
-{
+class Product {
     private String productName;
     private String productionDate;
     private String manufacturer;
