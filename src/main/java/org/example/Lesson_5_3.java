@@ -7,7 +7,7 @@ import static org.example.Lesson_5_1.printStudents;
 
 import static org.example.PhoneBook.phoneBookData;
 import org.example.Lesson_5_1.*;
-import static org.example.PhoneBook.get;
+
 
 
 public class Lesson_5_3
@@ -69,10 +69,10 @@ public class Lesson_5_3
         PhoneBook contact3 = new PhoneBook();
         PhoneBook contact4 = new PhoneBook();
 
-        contact1.phoneBook("Иванов", "+79999999999");
-        contact2.phoneBook("Иванов", "+78888888888");
-        contact3.phoneBook("Сергеев", "+777777777777");
-        contact4.phoneBook("Васильев", "+766666666666");
+        contact1.phoneBook("+79999999999", "Иванов");
+        contact2.phoneBook("+78888888888", "Иванов");
+        contact3.phoneBook("+777777777777","Сергеев");
+        contact4.phoneBook("+766666666666","Васильев");
 
         contact1.add();
         contact2.add();
@@ -82,14 +82,16 @@ public class Lesson_5_3
         System.out.println();
         System.out.println("Список всех контактов в телефонной книге.");
 
-        for (String[] i : phoneBookData)
+        for (String phoneNumber : phoneBookData.keySet())
         {
-            System.out.println(Arrays.toString(i));
+            String key = phoneNumber;
+            String value = phoneBookData.get(phoneNumber);
+            System.out.println( value + " " + key);
         }
 
         System.out.println();
         System.out.println("Номера телефонов по запросу.");
 
-        get("Иванов");
+        PhoneBook.get("Иванов");
     }
 }

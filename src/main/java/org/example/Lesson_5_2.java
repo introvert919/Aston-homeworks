@@ -1,6 +1,6 @@
 package org.example;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /* Задание 2. Написать простой класс Телефонный Справочник,
 который хранит в себе список фамилий и телефонных номеров.
@@ -14,29 +14,28 @@ class PhoneBook
     String lastName;
     String phoneNumber;
 
-    static ArrayList<String[]> phoneBookData = new ArrayList<>();
+    static Map<String, String> phoneBookData = new HashMap<>();
 
-    public void phoneBook(String lastName, String phoneNumber)
+    public void phoneBook(String phoneNumber, String lastName)
     {
-        this.lastName = lastName;
         this.phoneNumber = phoneNumber;
+        this.lastName = lastName;
     }
 
     public void add()
     {
-        String[] data = new String[2];
-        data[0] = lastName;
-        data[1] = phoneNumber;
-        phoneBookData.add(data);
+        phoneBookData.put(phoneNumber,lastName);
     }
 
-    public static void get(String lastName)
+    public static void get(String lastNameToFind)
     {
-        for (String[] i : phoneBookData)
+        for (String phoneNumber : phoneBookData.keySet())
         {
-            if (i[0] == lastName)
+            if (phoneBookData.get(phoneNumber).equals(lastNameToFind))
             {
-                System.out.println(Arrays.toString(i));
+                String key = phoneNumber;
+                String value = phoneBookData.get(phoneNumber);
+                System.out.println(value + " " + key);
             }
         }
     }
