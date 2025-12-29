@@ -67,4 +67,4 @@ class Geometry implements GeometryFormulas
     }
 }
 
-public class Lesson_3_2 { }
+
