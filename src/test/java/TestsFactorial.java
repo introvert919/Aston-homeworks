@@ -38,7 +38,7 @@ class Factorial
     }
 }
 
-public class Tests
+public class TestsFactorial
 {
     @DataProvider(name = "testFactorialCalculator")
     public Object[][] factorialData()

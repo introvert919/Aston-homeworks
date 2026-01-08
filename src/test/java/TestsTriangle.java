@@ -2,7 +2,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
-class TriangleArea
+class Triangle
 {
     public String triangleAreaCalculator(int side, int height)
     {
@@ -17,7 +17,7 @@ class TriangleArea
     }
 }
 
-class Tests2
+class TestsTriangle
 {
     @DataProvider(name = "testTriangleAreaCalculator")
     public Object[][] factorialData()
@@ -32,8 +32,8 @@ class Tests2
     @Test(dataProvider = "testTriangleAreaCalculator")
     public void testTriangleArea(int side, int height, String expected)
     {
-        TriangleArea triangleArea = new TriangleArea();
-        String actual = triangleArea.triangleAreaCalculator(side, height);
+        Triangle triangle = new Triangle();
+        String actual = triangle.triangleAreaCalculator(side, height);
         assertEquals(expected, actual);
     }
 }

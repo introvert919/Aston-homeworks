@@ -30,7 +30,7 @@ class Arithmetic
     }
 }
 
-class Tests3
+class TestsArithmetic
 {
     @DataProvider(name = "testArithmeticCalculator")
     public Object[][] factorialData()
