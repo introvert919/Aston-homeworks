@@ -1,0 +1,22 @@
+<suite name="Тестирование программ">
+    <test name="Факториал">
+        <classes>
+            <class name="Tests"/>
+        </classes>
+    </test>
+    <test name="Площадь треугольника">
+        <classes>
+            <class name="Tests2"/>
+        </classes>
+    </test>
+    <test name="Арифметические действия с двумя числами">
+        <classes>
+            <class name="Tests3"/>
+        </classes>
+    </test>
+    <test name="Сравнение двух чисел">
+        <classes>
+            <class name="Tests4"/>
+        </classes>
+    </test>
+</suite>
