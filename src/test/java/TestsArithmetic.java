@@ -23,12 +23,12 @@ class Arithmetic
     }
 }
 
-class Tests3
+class TestsArithmetic
 {
     @DisplayName("Арифметические действия с двумя числами")
     @ParameterizedTest
     @CsvSource({"2,2,+,4", "2,2,-,0", "2,2,*,4", "2,2,/,1"})
-    public void testTriangleArea(int firstNumber, int secondNumber, String method, int expected)
+    public void testArithmeticCalculator(int firstNumber, int secondNumber, String method, int expected)
     {
         Arithmetic arithmetic = new Arithmetic();
         int actual = arithmetic.arithmeticCalculator(firstNumber, secondNumber, method);

@@ -37,7 +37,7 @@ class Factorial
     }
 }
 
-public class Tests
+public class TestsFactorial
 {
     @DisplayName("Факториал числа")
     @ParameterizedTest

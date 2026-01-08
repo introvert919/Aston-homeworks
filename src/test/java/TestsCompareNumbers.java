@@ -3,7 +3,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.api.DisplayName;
 
-class Numbers
+class CompareNumbers
 {
     public String compareTwoNumbers(int firstNumber, int secondNumber)
     {
@@ -22,15 +22,15 @@ class Numbers
     }
 }
 
-public class Tests4
+public class TestsCompareNumbers
 {
     @DisplayName("Сравнение двух целых чисел")
     @ParameterizedTest
     @CsvSource({"4,3,Первое число больше второго.", "3,4,Первое число меньше второго.", "4,4,Первое число равно второму."})
     public void testCompareTwoNumbers(int firstNumber, int secondNumber, String expected)
     {
-        Numbers numbers = new Numbers();
-        String actual = numbers.compareTwoNumbers(firstNumber, secondNumber);
+        CompareNumbers compareNumbers = new CompareNumbers();
+        String actual = compareNumbers.compareTwoNumbers(firstNumber, secondNumber);
         Assertions.assertEquals(expected, actual);
     }
 }
