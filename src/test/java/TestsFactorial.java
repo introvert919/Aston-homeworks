@@ -12,7 +12,7 @@ import static org.testng.Assert.assertEquals;
 В ветке Lesson_7_junit_5 напишите юнит-тесты для этих программ, используя Junit 5.
 В ветке Lesson_7_testng  напишите юнит-тесты для этих программ, используя TestNG. */
 
-// testing.xml в папке resources.
+// testng.xml в папке resources.
 
 class Factorial
 {
