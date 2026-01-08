@@ -25,7 +25,7 @@ class CompareNumbers
 public class TestsCompareNumbers
 {
     @DataProvider(name = "testCompareTwoNumbers")
-    public Object[][] factorialData()
+    public Object[][] numberData()
     {
         return new Object[][]
                 {

@@ -20,7 +20,7 @@ class Triangle
 class TestsTriangle
 {
     @DataProvider(name = "testTriangleAreaCalculator")
-    public Object[][] factorialData()
+    public Object[][] triangleData()
     {
         return new Object[][]
         {

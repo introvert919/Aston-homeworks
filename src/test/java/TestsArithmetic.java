@@ -33,7 +33,7 @@ class Arithmetic
 class TestsArithmetic
 {
     @DataProvider(name = "testArithmeticCalculator")
-    public Object[][] factorialData()
+    public Object[][] arithmeticData()
     {
         return new Object[][]
                 {
