@@ -59,7 +59,7 @@ public class PostmanApiTests
                 //log().all().
 
                 statusCode(200).
-                body("$", hasKey("args"), // В пустом объекте нет значений, не с чем сравнивать. Можно определить только наличие ключа.
+                body("$", hasKey("args"),
                         "data", is("This is expected to be sent back as part of response body."),
                         "$", hasKey("files"),
                         "$", hasKey("form"),
