@@ -2,7 +2,9 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
-class Triangle
+
+
+class TestsTriangle
 {
     public String triangleAreaCalculator(int side, int height)
     {
@@ -15,10 +17,7 @@ class Triangle
             return ("Длина и высота треугольника не могут быть отрицательными.");
         }
     }
-}
 
-class TestsTriangle
-{
     @DataProvider(name = "testTriangleAreaCalculator")
     public Object[][] triangleData()
     {
@@ -32,8 +31,7 @@ class TestsTriangle
     @Test(dataProvider = "testTriangleAreaCalculator")
     public void testTriangleArea(int side, int height, String expected)
     {
-        Triangle triangle = new Triangle();
-        String actual = triangle.triangleAreaCalculator(side, height);
+        String actual = triangleAreaCalculator(side, height);
         assertEquals(expected, actual);
     }
 }

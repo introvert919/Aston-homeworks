@@ -14,7 +14,8 @@ import static org.testng.Assert.assertEquals;
 
 // testng.xml в папке resources.
 
-class Factorial
+
+public class TestsFactorial
 {
     public String factorialCalculator(int number)
     {
@@ -36,10 +37,7 @@ class Factorial
             return ("Факториал отрицательного числа не определен.");
         }
     }
-}
 
-public class TestsFactorial
-{
     @DataProvider(name = "testFactorialCalculator")
     public Object[][] factorialData()
     {
@@ -54,8 +52,7 @@ public class TestsFactorial
     @Test(dataProvider = "testFactorialCalculator")
     public void testFactorial(int number, String expected)
     {
-        Factorial factorial = new Factorial();
-        String actual = factorial.factorialCalculator(number);
+        String actual = factorialCalculator(number);
         assertEquals(actual, expected);
     }
 }

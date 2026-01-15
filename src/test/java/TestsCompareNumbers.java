@@ -3,7 +3,9 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-class CompareNumbers
+
+
+public class TestsCompareNumbers
 {
     public String compareTwoNumbers(int firstNumber, int secondNumber)
     {
@@ -20,10 +22,7 @@ class CompareNumbers
             return ("Первое число равно второму.");
         }
     }
-}
 
-public class TestsCompareNumbers
-{
     @DataProvider(name = "testCompareTwoNumbers")
     public Object[][] numberData()
     {
@@ -38,8 +37,7 @@ public class TestsCompareNumbers
     @Test(dataProvider = "testCompareTwoNumbers")
     public void testCompareTwoNumbers(int firstNumber, int secondNumber, String expected)
     {
-        CompareNumbers compareNumbers = new CompareNumbers();
-        String actual = compareNumbers.compareTwoNumbers(firstNumber, secondNumber);
+        String actual = compareTwoNumbers(firstNumber, secondNumber);
         assertEquals(expected, actual);
     }
 }

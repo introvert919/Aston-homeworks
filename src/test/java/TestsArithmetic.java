@@ -3,7 +3,9 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-class Arithmetic
+
+
+class TestsArithmetic
 {
     public String arithmeticCalculator(int firstNumber, int secondNumber, String method)
     {
@@ -28,10 +30,7 @@ class Arithmetic
         }
         return (result);
     }
-}
 
-class TestsArithmetic
-{
     @DataProvider(name = "testArithmeticCalculator")
     public Object[][] arithmeticData()
     {
@@ -48,8 +47,7 @@ class TestsArithmetic
     @Test(dataProvider = "testArithmeticCalculator")
     public void testArithmeticCalculator(int firstNumber, int secondNumber, String method, String expected)
     {
-        Arithmetic arithmetic = new Arithmetic();
-        String actual = arithmetic.arithmeticCalculator(firstNumber, secondNumber, method);
+        String actual = arithmeticCalculator(firstNumber, secondNumber, method);
         assertEquals(expected, actual);
     }
 }
