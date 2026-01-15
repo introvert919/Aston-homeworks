@@ -4,7 +4,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.api.DisplayName;
 
 
-class Triangle
+class TestsTriangle
 {
     public String triangleAreaCalculator(int side, int height)
     {
@@ -17,17 +17,13 @@ class Triangle
             return ("Длина и высота треугольника не могут быть отрицательными.");
         }
     }
-}
 
-class TestsTriangle
-{
     @DisplayName("Площадь треугольника")
     @ParameterizedTest
     @CsvSource({"4,2,4", "-3,4,Длина и высота треугольника не могут быть отрицательными."})
     public void testTriangleArea(int side, int height, String expected)
     {
-        Triangle triangle = new Triangle();
-        String actual = triangle.triangleAreaCalculator(side, height);
+        String actual = triangleAreaCalculator(side, height);
         Assertions.assertEquals(expected, actual);
     }
 }

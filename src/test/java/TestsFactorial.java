@@ -13,7 +13,8 @@ import org.junit.jupiter.api.DisplayName;
 В ветке Lesson_7_junit_5 напишите юнит-тесты для этих программ, используя Junit 5.
 В ветке Lesson_7_testng  напишите юнит-тесты для этих программ, используя TestNG.*/
 
-class Factorial
+
+public class TestsFactorial
 {
     public String factorialCalculator(int number)
     {
@@ -35,17 +36,13 @@ class Factorial
             return ("Факториал отрицательного числа не определен.");
         }
     }
-}
 
-public class TestsFactorial
-{
     @DisplayName("Факториал числа")
     @ParameterizedTest
     @CsvSource({"4,24", "0,1", "-4,Факториал отрицательного числа не определен."})
     public void testFactorial(int number, String expected)
     {
-        Factorial factorial = new Factorial();
-        String actual = factorial.factorialCalculator(number);
+        String actual = factorialCalculator(number);
         Assertions.assertEquals(expected, actual);
     }
 }

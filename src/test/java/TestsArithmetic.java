@@ -4,7 +4,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.api.DisplayName;
 
 
-class Arithmetic
+class TestsArithmetic
 {
     public int arithmeticCalculator(int firstNumber, int secondNumber, String method)
     {
@@ -12,26 +12,22 @@ class Arithmetic
         switch (method)
         {
             case "+": result = firstNumber + secondNumber;
-            break;
+                break;
             case "-": result = firstNumber - secondNumber;
-            break;
+                break;
             case "*": result = firstNumber * secondNumber;
-            break;
+                break;
             case "/": result = firstNumber / secondNumber;
         }
         return (result);
     }
-}
 
-class TestsArithmetic
-{
     @DisplayName("Арифметические действия с двумя числами")
     @ParameterizedTest
     @CsvSource({"2,2,+,4", "2,2,-,0", "2,2,*,4", "2,2,/,1"})
     public void testArithmeticCalculator(int firstNumber, int secondNumber, String method, int expected)
     {
-        Arithmetic arithmetic = new Arithmetic();
-        int actual = arithmetic.arithmeticCalculator(firstNumber, secondNumber, method);
+        int actual = arithmeticCalculator(firstNumber, secondNumber, method);
         Assertions.assertEquals(expected, actual);
     }
 }
