@@ -30,7 +30,7 @@ public class MtsTests
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
-        WebElement Button = driver.findElement(By.xpath("//*[@id=\"cookie-agree\"]"));
+        WebElement Button = driver.findElement(By.id("cookie-agree"));
         Button.click();
     }
 
@@ -38,9 +38,6 @@ public class MtsTests
     void tearDown()
     {
         driver.navigate().refresh();
-
-        var element = driver.findElement(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]"));
-        Actions a = new Actions(driver); a.moveToElement(element).perform();
     }
 
     @AfterAll
@@ -54,8 +51,9 @@ public class MtsTests
     @Test
     public void headerTextTest ()
     {
-        var headerText = driver.findElement(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/h2"));
-        String actual = headerText.getText();
+        var headerTextParent = driver.findElement(By.className("pay__wrapper"));
+        var headerTextChild = headerTextParent.findElement(By.tagName("h2"));
+        String actual = headerTextChild.getText();
         String expected = "Онлайн пополнение\nбез комиссии";
         Assertions.assertEquals(expected, actual);
     }
@@ -79,7 +77,7 @@ public class MtsTests
     @Test
     public void aboutServiceLinkTest ()
     {
-        var serviceLink = driver.findElement(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/a"));
+        var serviceLink = driver.findElement(By.linkText("Подробнее о сервисе"));
         serviceLink.click();
         String actual = driver.getTitle();
         String expected = "Порядок оплаты и безопасность интернет платежей";
@@ -93,27 +91,28 @@ public class MtsTests
     public void continueButtonTest ()
     {
         // Поле "Номер телефона".
-        var PhoneNumber = driver.findElement(By.xpath("//*[@id=\"connection-phone\"]"));
+        var PhoneNumber = driver.findElement(By.id("connection-phone"));
         PhoneNumber.sendKeys("297777777");
 
         // Поле "Сумма к оплате".
-        var Payment = driver.findElement(By.xpath("//*[@id=\"connection-sum\"]"));
+        var Payment = driver.findElement(By.id("connection-sum"));
         Payment.sendKeys("100");
 
         // Поле "E-mail".
-        var EMail = driver.findElement(By.xpath("//*[@id=\"connection-email\"]"));
+        var EMail = driver.findElement(By.id("connection-email"));
         EMail.sendKeys("introvert919@mail.ru");
 
         // Кнопка "Продолжить".
-        var buttonContinue = driver.findElement(By.xpath("//*[@id=\"pay-connection\"]/button"));
-        buttonContinue.click();
+        var buttonContinueParent = driver.findElement(By.id("pay-connection"));
+        var buttonContinueChild = buttonContinueParent.findElement(By.tagName("button"));
+        buttonContinueChild.click();
 
         // Окно для платежа.
-        var iframe = driver.findElement(By.xpath("/html/body/div[9]/div/iframe"));
+        var iframe = driver.findElement(By.className("payment-widget-iframe"));
         driver.switchTo().frame(iframe);
-        var PaymentWindow = driver.findElement(By.xpath("/html/body/app-root/div/div/div/app-payment-container/section/div/div/div[2]/span"));
+        var paymentData = driver.findElement(By.className("pay-description__text"));
 
-        String actual = PaymentWindow.getText();
+        String actual = paymentData.getText();
         String expected = "Оплата: Услуги связи Номер:375297777777";
         Assertions.assertEquals(expected, actual);
     }
