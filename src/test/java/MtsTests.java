@@ -85,7 +85,6 @@ public class MtsTests
         var iframe = driver.findElement(By.xpath("//iframe[@src='https://checkout.bepaid.by/widget_v2/index.html']")); // Окно оплаты.
         driver.switchTo().frame(iframe);
 
-        String actual = driver.findElement(By.xpath("//div[@class='pay-description__cost']/child::span")).getText();
-        Assertions.assertEquals("100.00 BYN", actual); // В assert поиск actual не выполняется.
+        Assertions.assertEquals("100.00 BYN", driver.findElement(By.xpath("//div[@class='pay-description__cost']/child::span")).getText());
     }
 }
