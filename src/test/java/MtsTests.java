@@ -50,38 +50,28 @@ public class MtsTests
     @Test
     public void headerTextTest ()
     {
-        var headerTextParent = driver.findElement(By.className("pay__wrapper"));
-        var headerTextChild = headerTextParent.findElement(By.tagName("h2"));
-        String actual = headerTextChild.getText();
-        String expected = "Онлайн пополнение\nбез комиссии";
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals("Онлайн пополнение\nбез комиссии", driver.findElement(By.xpath("//h2[contains(text(),'Онлайн пополнение')]")).getText());
     }
 
     @DisplayName("Наличие картинок карт оплаты")
     @ParameterizedTest
-    @ValueSource(strings = { "//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[2]/ul/li[1]/img",  // Visa.
-                             "//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[2]/ul/li[2]/img",  // Verified by Visa.
-                             "//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[2]/ul/li[3]/img",  // Master Card.
-                             "//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[2]/ul/li[4]/img",  // Master Card Secure Code.
-                             "//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[2]/ul/li[5]/img"}) // Белкард.
+    @ValueSource(strings = { "//img[@src='/local/templates/new_design/assets/html/images/pages/index/pay/visa.svg']",  // Visa.
+            "//img[@src='/local/templates/new_design/assets/html/images/pages/index/pay/visa-verified.svg']",  // Verified by Visa.
+            "//img[@src='/local/templates/new_design/assets/html/images/pages/index/pay/mastercard.svg']",  // Master Card.
+            "//img[@src='/local/templates/new_design/assets/html/images/pages/index/pay/mastercard-secure.svg']",  // Master Card Secure Code.
+            "//img[@src='/local/templates/new_design/assets/html/images/pages/index/pay/belkart.svg']"}) // Белкард.
 
     public void imageIsDisplayedTest (String xPath)
     {
-        var image = driver.findElement(By.xpath(xPath));
-        boolean actual = image.isDisplayed();
-        Assertions.assertTrue(actual);
+        Assertions.assertTrue(driver.findElement(By.xpath(xPath)).isDisplayed());
     }
 
     @DisplayName("Работа ссылки \"Подробнее о сервисе\"")
     @Test
     public void aboutServiceLinkTest ()
     {
-        var serviceLink = driver.findElement(By.linkText("Подробнее о сервисе"));
-        serviceLink.click();
-        String actual = driver.getTitle();
-        String expected = "Порядок оплаты и безопасность интернет платежей";
-        Assertions.assertEquals(expected, actual);
-
+        driver.findElement(By.linkText("Подробнее о сервисе")).click();
+        Assertions.assertEquals("Порядок оплаты и безопасность интернет платежей", driver.getTitle());
         driver.navigate().back();
     }
 
@@ -89,30 +79,15 @@ public class MtsTests
     @Test
     public void continueButtonTest ()
     {
-        // Поле "Номер телефона".
-        var PhoneNumber = driver.findElement(By.id("connection-phone"));
-        PhoneNumber.sendKeys("297777777");
+        driver.findElement(By.id("connection-phone")).sendKeys("297777777"); // Поле "Номер телефона".
+        driver.findElement(By.id("connection-sum")).sendKeys("100"); // Поле "Сумма к оплате".
+        driver.findElement(By.id("connection-email")).sendKeys("introvert919@mail.ru"); // Поле "E-mail".
+        driver.findElement(By.xpath("//form[@id='pay-connection']/child::button")).click(); // Кнопка "Продолжить".
 
-        // Поле "Сумма к оплате".
-        var Payment = driver.findElement(By.id("connection-sum"));
-        Payment.sendKeys("100");
-
-        // Поле "E-mail".
-        var EMail = driver.findElement(By.id("connection-email"));
-        EMail.sendKeys("introvert919@mail.ru");
-
-        // Кнопка "Продолжить".
-        var buttonContinueParent = driver.findElement(By.id("pay-connection"));
-        var buttonContinueChild = buttonContinueParent.findElement(By.tagName("button"));
-        buttonContinueChild.click();
-
-        // Окно для платежа.
-        var iframe = driver.findElement(By.className("payment-widget-iframe"));
+        var iframe = driver.findElement(By.xpath("//iframe[@src='https://checkout.bepaid.by/widget_v2/index.html']")); // Окно оплаты.
         driver.switchTo().frame(iframe);
-        var paymentData = driver.findElement(By.className("pay-description__text"));
 
-        String actual = paymentData.getText();
-        String expected = "Оплата: Услуги связи Номер:375297777777";
-        Assertions.assertEquals(expected, actual);
+        String actual = driver.findElement(By.xpath("//div[@class='pay-description__cost']/child::span")).getText();
+        Assertions.assertEquals("100.00 BYN", actual); // В assert поиск actual не выполняется.
     }
 }
