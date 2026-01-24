@@ -36,7 +36,7 @@
                     </property>
                     </systemProperties>
                         <systemPropertyVariables>
-                            <allure.result.directory>allure-results</allure.result.directory>
+                            <allure.results.directory>target/allure-results</allure.results.directory>
                         </systemPropertyVariables>
                 </configuration>
                 <dependencies>
@@ -50,10 +50,10 @@
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>2.10.0</version>
+                <version>2.14.0</version>
             </plugin>
         </plugins>
-
+<testOutputDirectory>target/classes</testOutputDirectory>
     </build>
 
     <dependencies>
@@ -92,7 +92,7 @@
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit5</artifactId>
-            <version>2.14.0</version>
+            <version>2.23.0</version>
         </dependency>
     </dependencies>
 
